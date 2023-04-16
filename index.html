@@ -1,15 +1,201 @@
 <!doctype html>
 <html>
 <head>
+  <style>
+    .row {
+      display: flex;
+    }
+
+    .row > div {
+      width: 50%;
+    }
+
+    #chart, #chart2 {
+      width: calc(100% - 200px);
+    }
+
+    .tradingview-widget-container {
+      height: 480px;
+    }
+
+    .chart {
+      height: 100%;
+    }
+
+    .footer {
+      margin-top: 3em;
+    }
+
+    #sidebar {
+      width: 200px;
+      height: 100%;
+      position: fixed;
+      background-color: white;
+      border-left: 1px;
+      border-bottom: 1px;
+      border-color: black;
+      padding-top: 2em;
+      right: 0;
+      top: 0;
+    }
+  </style>
 </head>
 <body>
-  <h1>米国重要指標カレンダー</h1>
-  <iframe src="https://sslecal2.investing.com?ecoDayBackground=%2300853e&columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=3&features=datepicker,timezone&countries=5&calType=week&timeZone=29&lang=11" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe><div class="poweredBy" style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 11px;color: #333333;text-decoration: none;">金融ポータルサイト、<a href="https://jp.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;" class="underline_link">Investing.com 日本</a>によって提供されている経済カレンダー</span></div>
-  <div>
-    source:
-    <ul>
-      <li><a href="https://jp.investing.com/webmaster-tools/economic-calendar">https://jp.investing.com/webmaster-tools/economic-calendar</a></li>
-    </ul>
+  <div class="row" id="top"></div>
+  <div class="row">
+    <div id="calendar">
+      <h1>米国重要指標カレンダー</h1>
+      <iframe src="https://sslecal2.investing.com?ecoDayBackground=%2300853e&columns=exc_flags,exc_currency,exc_importance,exc_actual,exc_forecast,exc_previous&importance=3&features=datepicker,timezone&countries=5&calType=week&timeZone=29&lang=11" width="650" height="467" frameborder="0" allowtransparency="true" marginwidth="0" marginheight="0"></iframe><div class="poweredBy" style="font-family: Arial, Helvetica, sans-serif;"><span style="font-size: 11px;color: #333333;text-decoration: none;">金融ポータルサイト、<a href="https://jp.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;" class="underline_link">Investing.com 日本</a>によって提供されている経済カレンダー</span></div>
+    </div>
+    <div>
+      <div>
+        <h1>政策金利</h1>
+        <iframe frameborder="0" scrolling="no" height=50 width="474" allowtransparency="true" marginwidth="0" marginheight="0" src="https://sslirates.investing.com/index.php?rows=4&bg1=FFFFFF&bg2=F1F5F8&text_color=333333&enable_border=show&border_color=0452A1&header_bg=0452A1&header_text=FFFFFF&force_lang=11" align="center"></iframe><br /><table width="200"><tbody><tr><td style="text-align:left"><a href="//www.investing.com" rel="nofollow" target="_blank"><img style="vertical-align:middle;" title="Investing.com" alt="Investing.com" border="0" src="https://92f8049275b46d631f32-c598b43a8fdedd4f0b9230706bd7ad18.ssl.cf1.rackcdn.com/forexpros_en_logo.png"></a></td></tr><tr><td><span style="font-size: 11px;color: #333333;text-decoration: none;"><a href="https://jp.investing.com/" rel="nofollow" target="_blank" style="font-size: 11px;color: #06529D; font-weight: bold;" class="underline_link">Investing.com 日本</a> によって機能された政策金利表。</span></td></tr></tbody></table>
+      </div>
+      <div>
+        <h1>サブウインドウ</h1>
+        <ul>
+          <li><a href="#" onclick="window.open('https://tvc6.investing.com/init.php?family_prefix=tvc6&carrier=bb3a1a2c2fdda038e32910b62d1d58fb&time=1681628929&domain_ID=11&lang_ID=11&timezone_ID=29&pair_ID=23705&interval=86400&refresh=16&session=session&client=&user=guest&width=720&height=480&init_page=instrument&m_pids=&watchlist=&site=https://jp.investing.com','subwin1','width=720,height=480'); false;">アメリカ １０年 債券利回りリアルタイムチャート</a></li>
+          <li><a href="#" onclick="window.open('https://tvc6.investing.com/init.php?family_prefix=tvc6&carrier=ac6507bc5a85dfc6b1a67a005b14357d&time=1681629210&domain_ID=11&lang_ID=11&timezone_ID=29&pair_ID=23701&interval=86400&refresh=16&session=session&client=&user=guest&width=720&height=480&init_page=instrument&m_pids=&watchlist=&site=https://jp.investing.com','subwin2','width=720,height=480'); false;">アメリカ ２年 債券利回りリアルタイムチャート</a></li>
+          <li><a href="#" onclick="window.open('https://jp.investing.com/central-banks/fed-rate-monitor','subwin3','width=720,height=480'); false;">米国政策金利モニターツール</a></li>
+          <li><a href="#" onclick="window.open('https://jp.investing.com/economic-calendar/interest-rate-decision-168','subwin4','width=720,height=480'); false;">米国 政策金利発表</a></li>
+        </ul>
+      </div>
+    </div>
   </div>
+  <div>
+    <h1>リアルタイムチャート</h1>
+  </div>
+  <div class="row" id="chart">
+    <div id="usdjpy">
+      <h3>ドル円</h3>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div id="tradingview_08be7 chart"></div>
+        <div class="tradingview-widget-copyright">TradingView提供の<a href="https://jp.tradingview.com/symbols/USDJPY/?exchange=FOREXCOM" rel="noopener" target="_blank"><span class="blue-text">USD JPYチャート</span></a></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget(
+        {
+        "autosize": true,
+        "symbol": "FOREXCOM:USDJPY",
+        "interval": "1",
+        "timezone": "Asia/Tokyo",
+        "theme": "dark",
+        "style": "1",
+        "locale": "ja",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_08be7"
+      }
+        );
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </div>
+    <div id="xauusd">
+      <h3>GOLD/ドル</h3>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-copyright">TradingView提供の<a href="https://jp.tradingview.com/symbols/XAUUSD/?exchange=FOREXCOM" rel="noopener" target="_blank"><span class="blue-text">XAUUSDチャート</span></a></div>
+        <div id="tradingview_2f337" class="chart"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget(
+        {
+        "autosize": true,
+        "symbol": "FOREXCOM:XAUUSD",
+        "interval": "1",
+        "timezone": "Asia/Tokyo",
+        "theme": "dark",
+        "style": "1",
+        "locale": "ja",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_2f337"
+      }
+        );
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </div>
+  </div>
+  <div class="row" id="chart2" style="margin-top: 3em;">
+    <div id="gbpusd">
+      <h3>ポンド/ドル</h3>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-copyright">TradingView提供の<a href="https://jp.tradingview.com/symbols/GBPUSD/?exchange=FOREXCOM" rel="noopener" target="_blank"><span class="blue-text">GBP USDチャート</span></a></div>
+        <div id="tradingview_4e12a" class="chart"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget(
+        {
+        "autosize": true,
+        "symbol": "FOREXCOM:GBPUSD",
+        "interval": "1",
+        "timezone": "Asia/Tokyo",
+        "theme": "dark",
+        "style": "1",
+        "locale": "ja",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_4e12a"
+      }
+        );
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </div>
+    <div id="eurusd">
+      <h3>ユーロ/ドル</h3>
+      <!-- TradingView Widget BEGIN -->
+      <div class="tradingview-widget-container">
+        <div class="tradingview-widget-copyright">TradingView提供の<a href="https://jp.tradingview.com/symbols/EURUSD/?exchange=FOREXCOM" rel="noopener" target="_blank"><span class="blue-text">EUR USDチャート</span></a></div>
+        <div id="tradingview_0ac8c" class="chart"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+        <script type="text/javascript">
+        new TradingView.widget(
+        {
+        "autosize": true,
+        "symbol": "FOREXCOM:EURUSD",
+        "interval": "1",
+        "timezone": "Asia/Tokyo",
+        "theme": "dark",
+        "style": "1",
+        "locale": "ja",
+        "toolbar_bg": "#f1f3f6",
+        "enable_publishing": false,
+        "allow_symbol_change": true,
+        "container_id": "tradingview_0ac8c"
+      }
+        );
+        </script>
+      </div>
+      <!-- TradingView Widget END -->
+    </div>
+  </div>
+  <div class="row footer">
+    <div>
+      <h3>その他リンク</h3>
+      <ul>
+        <li>【引用元】<a href="https://jp.investing.com/webmaster-tools/economic-calendar" target="_blank">https://jp.investing.com/webmaster-tools/economic-calendar</a></li>
+        <li>【ソース】<a href="https://github.com/Y-Koji/Economic" target="_blank">https://github.com/Y-Koji/Economic</a></li>
+      </ul>
+    </div>
+  </div>
+  <div id="sidebar">
+    <h5>ナビゲーター</h5>
+    <ul>
+      <li><a href="#top">一番上へ</a></li>
+      <li><a href="#calendar">経済指標カレンダー</a></li>
+      <li><a href="#chart">リアルタイムチャート</a></li>
+      <li><a href="#bottom">一番下へ</a></li>
+  </ul>
+  </div>
+  <div class="row" id="bottom"></div>
 </body>
 </html>
